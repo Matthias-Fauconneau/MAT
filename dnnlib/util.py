@@ -29,7 +29,6 @@ import urllib
 import urllib.request
 import uuid
 
-from distutils.util import strtobool
 from typing import Any, List, Tuple, Union
 
 
@@ -148,17 +147,6 @@ def format_time(seconds: Union[int, float]) -> str:
         return "{0}h {1:02}m {2:02}s".format(s // (60 * 60), (s // 60) % 60, s % 60)
     else:
         return "{0}d {1:02}h {2:02}m".format(s // (24 * 60 * 60), (s // (60 * 60)) % 24, (s // 60) % 60)
-
-
-def ask_yes_no(question: str) -> bool:
-    """Ask the user the question until the user inputs a valid answer."""
-    while True:
-        try:
-            print("{0} [y/n]".format(question))
-            return strtobool(input().lower())
-        except ValueError:
-            pass
-
 
 def tuple_product(t: Tuple) -> Any:
     """Calculate the product of the tuple elements."""
