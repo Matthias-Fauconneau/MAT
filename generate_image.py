@@ -9,7 +9,6 @@
 
 """Generate images using pretrained network pickle."""
 import cv2
-import pyspng
 import glob
 import os
 import re
@@ -98,9 +97,6 @@ def generate_images(
 
     def read_image(image_path):
         with open(image_path, 'rb') as f:
-            if pyspng is not None and image_path.endswith('.png'):
-                image = pyspng.load(f.read())
-            else:
                 image = np.array(PIL.Image.open(f))
         if image.ndim == 2:
             image = image[:, :, np.newaxis] # HW => HWC
